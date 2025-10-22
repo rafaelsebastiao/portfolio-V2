@@ -1,0 +1,294 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+#start {
+    position: fixed;           /* fixa na tela inteira */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;             /* altura total da tela */
+    display: flex;             /* centraliza conteúdo */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;   /* fundo escuro */
+    color: #ffe81f;            /* texto amarelo */
+    z-index: 10;               /* fica acima do body::after e do restante */
+
+
+}
+
+#start button {
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    background-color: #ffe81f;
+    color: black;
+    border: none;
+    cursor: pointer;
+    margin-top: 2rem;
+}
+
+
+
+body {
+	margin: 0;
+	background-color: #000;
+	overflow: hidden !important;
+    height:"100vh";    
+}
+
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 80vh;
+	background: linear-gradient(
+		to bottom,
+		rgba(0, 0, 0, 1) 61%,
+		rgba(0, 0, 0, 0.54) 79%,
+		rgba(0, 0, 0, 0) 100%
+	);
+	z-index: 1;
+}
+
+.stars {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	background-color: #fff;
+	z-index: 2;
+}
+
+.intro {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	color: rgb(75, 213, 238);
+	font-family: "Open Sans", sans-serif;
+	font-weight: 500;
+	font-size: 3.25rem;
+	width: 80%;
+	opacity: 0;
+	animation: intro 6s ease-out 0.5s;
+}
+
+@keyframes intro {
+	0% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+	90% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
+
+.logo {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	width: 100%;
+	opacity: 0;
+	animation: logo 10s ease-out 12s;
+}
+
+.logo img {
+	width: inherit;
+}
+
+@keyframes logo {
+	0% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(2);
+	}
+	70% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+		transform: translate(-50%, -50%) scale(0.1);
+	}
+}
+
+p {
+	color: #ffe81f;
+}
+
+#scroller {
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 350%;
+	text-align: justify;
+	overflow: hidden;
+	height: 50em;
+	width: 20em;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	margin-left: -10em;
+	z-index: 0;
+	transform: perspective(350px) rotateX(25deg);
+	transform-origin: 50% 100%;
+    animation: endScroll 6s ease-in forwards 116s; 
+
+}
+
+#scroller::after {
+	position: absolute;
+	content: "";
+	bottom: 60%;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+#content {
+	position: absolute;
+	top: 100%;
+	animation: scoller 100s linear 19s;
+}
+
+@keyframes scoller {
+	0% {
+		top: 100%;
+	}
+	100% {
+		top: -200%;
+	}
+}
+
+#title,
+#subtitle {
+	text-align: center;
+	line-height: 1.5rem;
+}
+
+#subtitle {
+	text-transform: uppercase;
+	font-size: 3.5rem;
+}
+
+
+ 
+@keyframes endScroll {
+    0% {
+        transform: perspective(350px) rotateX(25deg) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: perspective(350px) rotateX(25deg) translateY(100%);
+        opacity: 0;
+    }
+}
+
+
+
+/*Adição*/
+#startOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100; /* mantém acima de tudo */
+    color: #ffe81f;
+    font-family: "Open Sans", sans-serif;
+    transition: opacity 1s ease; /* fade */
+    opacity: 1;
+}
+
+#startOverlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#startOverlay h1 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+}
+
+#startOverlay button {
+    padding: 1rem 3rem;
+    font-size: 2rem;
+    background: #ffe81f;
+    color: black;
+    border: none;
+    cursor: pointer;
+}
+
+
+
+
+.intro.hidden {
+    opacity: 0;
+}
+
+.intro {
+    opacity: 0;
+    animation: intro 6s ease-out 3s forwards; /* forwards mantém o estado final */
+}
+
+
+.notice {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #ffe81f;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.2rem;
+    z-index: 300; 
+    display: none; /* começa escondido */
+    animation: blink 1.5s infinite; /* efeito piscar */
+}
+
+@keyframes blink {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+
+
+#menu-portfolio {
+    display: none; /* escondido no início */
+    position: relative;
+    z-index: 999; /* garante que fique por cima */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+
+	font-family: "Open Sans", sans-serif;
+}
+
+.img-link:hover{
+	cursor:pointer;
+}
+
+#modulo1{
+    display: none; /* escondido no início */
+    position: relative;
+    z-index: 999; /* garante que fique por cima */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+
+	font-family: "Open Sans", sans-serif;
+}
+
+

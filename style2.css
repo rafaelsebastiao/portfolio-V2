@@ -1,0 +1,20 @@
+body{
+    background-image: url("img/teste.gif");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position:center;
+}
+
+
+#modulo1{
+    display: none; /* escondido no início */
+    position: relative;
+    z-index: 999; /* garante que fique por cima */
+    color: white;
+    text-align: center;
+    padding: 2rem;
+
+	font-family: "Open Sans", sans-serif;
+}
+
+
