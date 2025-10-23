@@ -1,20 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+
 body{
     background-image: url("img/teste.gif");
     background-size: cover;
     background-repeat: no-repeat;
     background-position:center;
+    font-family: 'Open Sans', sans-serif;
 }
 
+h1{
+    color:white;
+    font-size:3.5em;
+}
 
-#modulo1{
+.modulo{
     display: none; /* escondido no início */
     position: relative;
     z-index: 999; /* garante que fique por cima */
     color: white;
     text-align: center;
     padding: 2rem;
-
+    color:white;
 	font-family: "Open Sans", sans-serif;
 }
 
+.exercicio{
+    background-color: rgba(0, 0, 0, 0.6); /* preto com 60% de opacidade */
+    /* height:100px; */
+    border-radius:5px;
+    height:150px;
+}
 
+button{
+    width:100px;
+}
+
+#btnRetorno{
+    margin-top:100px;
+}
