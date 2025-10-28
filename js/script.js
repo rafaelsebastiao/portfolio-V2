@@ -41,7 +41,7 @@ for(let i = 0; i < 4; i++){
     btnExercises[0].push(window.document.querySelector(`button#exercicio${1}-${i+1}`))
 }
 
-for(let i = 0; i < 6; i++){
+for(let i = 0; i < 7; i++){
     btnExercises[1].push(window.document.querySelector(`button#exercicio${2}-${i+1}`))
 
 }
@@ -57,7 +57,7 @@ function setExercises(){
         btnExercises[0][i].addEventListener("click", ()=>{play(1, i+1)})
     }
 
-    for(let i = 0; i < 6; i++){
+    for(let i = 0; i < 7; i++){
         btnExercises[1][i].addEventListener("click", ()=>{play(2, i+1)})
     }
 }
@@ -79,7 +79,6 @@ btnsVoltar.forEach(btn => btn.addEventListener("click", returnMenu));
 
 
 function play(modulo, exercicio){
-    alert(modulo + " , " + exercicio)
     switch(modulo){
         case 1:
             switch(exercicio){
@@ -147,13 +146,14 @@ function play(modulo, exercicio){
                 break;
 
                 case 4:
+                     //calcule a diferença entre 2 números.​
                     {
                         let n1 = Number(window.prompt('Digite um número: '))
                         let n2 = Number(window.prompt('Digite outro número: '))
 
                         window.alert(`${n1} - ${n2} vale: ${n1-n2}`)
                     }
-                    //calcule a diferença entre 2 números.​
+                   
 
                     
                 break;
@@ -181,18 +181,25 @@ function play(modulo, exercicio){
                 break;
 
                 case 7:
+                    //Calcule a área (base * altura).​
+
                     {
                         
-                    let tempCelsius = Number(window.prompt("Digite a temperatura em celsius: "))
+                    //Calcule a área (base * altura).​
 
-                    let tempFarenheit = (tempCelsius*9/5) + 32
+                    let base = Number(window.prompt("Informe o valor da base: "))   
+                    let altura = Number(window.prompt("Informe o valor da altura: "))
 
-                    window.alert(`A temperatura ${tempCelsius}° C em Fahrenheit vale: ${tempFarenheit}° F`)
+                    let area = base * altura
+
+                    window.alert(`O valor da área é: ${area}m²`)
+                    }
                 break;
 
-            }            
+
+
+                   
         }
-                    //Converta uma temperatura em celsius para Fahrenheit (ºc*9/5)+32 ​
             
         break;
     }
