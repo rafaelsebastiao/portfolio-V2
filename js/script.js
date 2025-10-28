@@ -1,4 +1,4 @@
-const QTDMODULOS = 4
+const QTDMODULOS = 5
 const body = window.document.getElementsByTagName("body")[0]
 const stars = 400;
 const music = document.getElementById("music");
@@ -17,7 +17,6 @@ const linksImages = []
 const btnsVoltar = document.querySelectorAll("button.btnRetorno");
 
 
-
 const modulos = []
 
 const linkCSS = window.document.getElementById("link-css")
@@ -28,10 +27,6 @@ const imgLink = window.document.querySelector(".img-link")
 
 let introIsIskipped = false
 
-let btnExercise1;
-let btnExercise2;
-let btnExercise3;
-let btnExercise4;
 
 
 const btnExercises = [[], [], []]
@@ -44,6 +39,14 @@ for(let i = 0; i < 4; i++){
 for(let i = 0; i < 7; i++){
     btnExercises[1].push(window.document.querySelector(`button#exercicio${2}-${i+1}`))
 
+}
+
+for(let i = 0; i < 5; i++){
+    btnExercises[2].push(window.document.querySelector(`button#exercicio${3}-${i+1}`))
+}
+
+for(let i =0; i < 5; i++){
+    btnExercises[3].push(window.document.querySelector(`button#exercicio${4}`))
 }
 
 
@@ -59,6 +62,10 @@ function setExercises(){
 
     for(let i = 0; i < 7; i++){
         btnExercises[1][i].addEventListener("click", ()=>{play(2, i+1)})
+    }
+
+    for(let i = 0; i < 5; i++){
+        btnExercises[2][i].addEventListener("click", ()=>{play(3, i+1)})
     }
 }
 
@@ -77,7 +84,6 @@ btnsVoltar.forEach(btn => btn.addEventListener("click", returnMenu));
 
 
 
-
 function play(modulo, exercicio){
     switch(modulo){
         case 1:
@@ -87,7 +93,6 @@ function play(modulo, exercicio){
                     alert(`Olá, ${usuario}!`)
                 break;
                 
-
                 case 2:
                     let materiaFavorita = prompt('Informe sua matéria favorita: ')
                     alert(`A matéria ${materiaFavorita} realmente é ótima!`)
@@ -103,6 +108,9 @@ function play(modulo, exercicio){
                     respUsuario = respUsuario.toUpperCase()
                     window.alert(respUsuario == 'S' ? 'Boa garoto 😎!' : 'Já pode trancar o curso 😛')
                 break;
+
+
+
             }
         break;
         case 2:
@@ -197,11 +205,71 @@ function play(modulo, exercicio){
                 break;
 
 
-
                    
-        }
-            
+            }
         break;
+
+
+        case 3:
+            switch(exercicio){
+                case 1:
+                    //Peça a idade do usuário e verifique se ele é maior de idade (18 anos ou mais). Exiba uma mensagem informando "Maior de idade" ou "Menor de idade".​
+
+                    let idade = parseInt(prompt("Informe sua idade: ") )
+                    alert(idade >= 18 ? "Maior de idade" : "Menor de idade")
+                break;
+
+                case 2:
+                    // Solicite um número inteiro ao usuário. Crie uma estrutura condicional que verifique se o número é par ou ímpar e exiba o resultado
+                    let num = parseInt(prompt("Digite um número: "))
+                    alert(num % 2 == 0 ? "O número é par!" : "O número é ímpar!")
+                break;
+
+                case 3:
+                    //Peça ao usuário para digitar dois números. O programa deve comparar os números e informar qual deles é maior, ou se são iguais.
+                    let num1 = parseInt(prompt("Digite um número: "))
+                    let num2 = parseInt(prompt("Digite outro número: "))
+
+                    if (num1 > num2){
+                        alert(`${num1} é maior que ${num2}!`)
+                    }else if(num1 < num2){
+                        alert(`${num2} é maior que ${num1}!`)
+                    }else{
+                        alert(`Os números são iguais!`)
+                    }
+                break;
+
+                case 4:
+                    // Defina uma senha em uma variável. Peça ao usuário para digitar uma senha e verifique se a senha digitada é igual à senha armazenada. Exiba "Acesso permitido" ou "Acesso negado". (Use o operador de comparação estrita ===).​
+
+                    const SENHA = "12345"
+                    let senha = window.prompt("Informe a senha: ")
+                    window.alert(senha === SENHA ? "Acesso permitido!" : "Acesso negado!")
+                break;
+
+                case 5:
+                    /*
+                    Peça ao usuário para inserir a temperatura atual em graus Celsius. O programa deve exibir:​
+
+                    "Frio" se a temperatura for menor que 18°C.​
+
+                    "Agradável" se estiver entre 18°C e 25°C.​
+
+                    "Quente" se for maior que 25°C.*/
+
+                    let tempCelsius = Number(window.prompt("Digite a temperatura em graus celcius: "))
+                    window.alert(tempCelsius < 18 ? "Frio" : tempCelsius >= 18 && tempCelsius <= 25? "Agradável" : "Quente")
+                break;
+
+                case 6:
+
+                break;
+
+                
+            }
+
+        break;
+            
     }
 }
 //click de play nos exercicios
@@ -318,15 +386,20 @@ function aplyModuleImage(nModulo){
 
     switch(nModulo){
         case 0:
-            document.body.style.backgroundImage = 'url("assets/images/background/teste.gif")';
-
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")';
         break;
 
         case 1:
             document.body.style.backgroundImage = 'url("assets/images/background/kamino.gif")';
         break;
+
+        case 2:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+        break;
     }
 }
+
+
 
 function disaplyModuleImage(){
   // remove o background inline
@@ -352,8 +425,6 @@ function loadModules(nModulo) {
     
 
     modulos[nModulo].style.display = "block"
-
-
 
 
 }
