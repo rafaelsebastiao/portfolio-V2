@@ -37,7 +37,13 @@ h1{
     background-color: rgba(0, 0, 0, 0.6); /* preto com 60% de opacidade */
     /* height:100px; */
     border-radius:5px;
-    height:150px;
+    height:250px;
+    
+    display:flex;
+    flex-direction:column;
+    justify-content:start;
+    margin-bottom:30px;
+
 }
 
 button{
@@ -46,4 +52,14 @@ button{
 
 #btnRetorno{
     margin-top:100px;
+}
+
+
+.text-exercise{
+    justify-self: start;
+}
+
+.button-play-exercise{
+    align-self:center;
+    justify-self: center;
 }
