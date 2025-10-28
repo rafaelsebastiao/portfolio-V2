@@ -1,0 +1,5 @@
+=> Comandos iniciais
+=> Operadores aritiméticos
+=> Operadores Lógicos e Condicionais
+=> Laços de repetição
+

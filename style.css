@@ -280,7 +280,7 @@ p {
 	cursor:pointer;
 }
 
-#modulo1{
+.modulo{
     display: none; /* escondido no início */
     position: relative;
     z-index: 999; /* garante que fique por cima */
@@ -291,4 +291,6 @@ p {
 	font-family: "Open Sans", sans-serif;
 }
 
-
+.exercicio{
+	display:none;
+}
