@@ -8,7 +8,7 @@ html, body {
 
 
 body{
-    background-image: url("img/teste.gif");
+    /* background-image: url("img/teste.gif"); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position:center;

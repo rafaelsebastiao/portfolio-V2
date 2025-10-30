@@ -1,4 +1,4 @@
-const QTDMODULOS = 5
+const QTDMODULOS = 7
 const body = window.document.getElementsByTagName("body")[0]
 const stars = 400;
 const music = document.getElementById("music");
@@ -29,51 +29,46 @@ let introIsIskipped = false
 
 
 
-const btnExercises = [[], [], []]
+const btnExercises = [[], [], [], [], [], [], []]
+const numExercisesPerModule = []
 
 
-for(let i = 0; i < 4; i++){
-    btnExercises[0].push(window.document.querySelector(`button#exercicio${1}-${i+1}`))
+numExercisesPerModule.push(4)
+numExercisesPerModule.push(7)
+numExercisesPerModule.push(9)
+numExercisesPerModule.push(4)
+numExercisesPerModule.push(15)
+numExercisesPerModule.push(1)
+numExercisesPerModule.push(5)
+
+
+for(let i = 0; i < QTDMODULOS; i++){
+    for(let j = 0; j < numExercisesPerModule[i]; j++){
+        btnExercises[i].push(window.document.querySelector(`button#exercicio${i+1}-${j+1}`))
+    }
 }
 
-for(let i = 0; i < 7; i++){
-    btnExercises[1].push(window.document.querySelector(`button#exercicio${2}-${i+1}`))
-
-}
-
-for(let i = 0; i < 5; i++){
-    btnExercises[2].push(window.document.querySelector(`button#exercicio${3}-${i+1}`))
-}
-
-for(let i =0; i < 5; i++){
-    btnExercises[3].push(window.document.querySelector(`button#exercicio${4}`))
-}
 
 
 function setExercises(){
-    // btnExercise1.addEventListener("click", ()=>{play(1, 1)})
-    // btnExercise2.addEventListener("click", ()=>{play(1, 2)})
-    // btnExercise3.addEventListener("click", ()=>{play(1, 3)})
-    // btnExercise4.addEventListener("click", ()=>{play(1, 4)})
-
-    for(let i = 0; i < 4; i++){
-        btnExercises[0][i].addEventListener("click", ()=>{play(1, i+1)})
-    }
-
-    for(let i = 0; i < 7; i++){
-        btnExercises[1][i].addEventListener("click", ()=>{play(2, i+1)})
-    }
-
-    for(let i = 0; i < 5; i++){
-        btnExercises[2][i].addEventListener("click", ()=>{play(3, i+1)})
+    for(let i = 0; i < QTDMODULOS; i++){
+        for(let j = 0; j < numExercisesPerModule[i]; j++){
+            console.log(`Número de módulos: ${btnExercises.length}\nNúmero de exercicios:${numExercisesPerModule[i]}`)
+            btnExercises[i][j].addEventListener("click", ()=>{play(i+1, j+1)})
+        }
     }
 }
 
+//troca de CSS
+function turnCSS(){
+    linkCSS.href = (linkCSS.href.includes('style.css')) ? 'style2.css' : 'style.css';
+
+}
 
 
 function returnMenu() {
     menuPortfolio.style.display = "block";
-    linkCSS.href = (linkCSS.href.includes('style.css')) ? 'style2.css' : 'style.css';
+    turnCSS()
     disaplyModuleImage();
     desapearModules();
     createStars();
@@ -276,8 +271,7 @@ function play(modulo, exercicio){
 
 
 
-
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < QTDMODULOS; i++) {
     modulos.push(document.querySelector(`#modulo${i + 1}`))
 }
 
@@ -346,31 +340,16 @@ function skipIntro() {
     document.getElementById("menu-portfolio").style.display = "block";
 
 
-    // trocar de CSS
-    
-
-    for (let i = 2; i < QTDMODULOS; i++) {
+    for (let i = 2; i < QTDMODULOS + 2; i++) {
         //Considera se de 2 pra frente para descartar a imagem da logo SENAI WARS, que é a [1]. Ela nao deve ser inclusa no array de imagens
         linksImages.push(window.document.getElementsByTagName("img")[i])
         linksImages[i-2].addEventListener("click", () => { loadModules(i-2) })
         console.log(linksImages[i-2])
     }
 
-    
 
-    // const portfolioImages = document.querySelectorAll("#portfolio>.img-link"); // Seleciona apenas as imagens com classe img-link dentro do #portfolio
-    // portfolioImages.forEach((img, index) => {
-    //     img.addEventListener("click", () => {
-    //         loadModules(index); // Passa o índice correto (0, 1, 2) para cada imagem
-    //     });
-    // });
 
     setExercises()
-
-}
-
-//troca de CSS
-function turnCSS(){
 
 }
 
@@ -378,11 +357,9 @@ function aplyModuleImage(nModulo){
     //aplicar o fundo do planeta de acordo com o módulo selecionado
     document.body.style.margin = "0";
     document.body.style.height = "100vh"; 
-    // document.body.style.backgroundImage = 'url("img/teste.gif")';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
-    // document.body.style.backgroundAttachment = 'fixed';
 
     switch(nModulo){
         case 0:
@@ -395,7 +372,28 @@ function aplyModuleImage(nModulo){
 
         case 2:
             document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            break;
+            
+        case 3:
+                
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            break;
+            
+        case 4:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+                
         break;
+
+        case 5:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+                
+        break;
+
+        case 6:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+                
+        break;
+
     }
 }
 
@@ -411,8 +409,7 @@ function disaplyModuleImage(){
 
 function loadModules(nModulo) {
     //troca o CSS
-    linkCSS.href = (linkCSS.href.includes('style.css')) ? 'style2.css' : 'style.css';
-    
+    turnCSS()   
      //Some com o menu e carrega os módulos de exercícios
     menuPortfolio.style.display = "none"
 
