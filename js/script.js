@@ -24,7 +24,6 @@ const linkCSS = window.document.getElementById("link-css")
 const imgLink = window.document.querySelector(".img-link")
 
 
-
 let introIsIskipped = false
 
 
@@ -257,12 +256,336 @@ function play(modulo, exercicio){
                 break;
 
                 case 6:
+                    /*
+                    Solicite duas notas ao usuário e informe se está acima da média, e se é uma nota par, e mostre o
+                    resultado ao usuário.
+                    */
 
+                    let n1 = Number(window.prompt("Digite a primeira nota: ") )
+                    let n2 = Number(window.prompt("Digite a segunda nota: ") )
+                    
+                    const MEDIA = 6
+
+                    let mediaUsuario = (n1 + n2) / 2
+                    
+                    alert(`Média: ${MEDIA}\nMédia calculada: ${mediaUsuario}\n${mediaUsuario > MEDIA ? "Está acima da média!" : mediaUsuario < MEDIA ? "Está abaixo da média!" : "Está na média!"}\n${mediaUsuario % 2 ? "A média calculada é ímpar!" : "A média calculada é par!"}`)
+                break;
+
+                case 7:
+                    /* Solicite o peso e a altura de uma pessoa e calcule o IMC( peso/altura²). Apresente o resultado ao
+                    usuário.*/
+
+                    let weigth = Number(window.prompt("Informe o peso: "))
+                    let height = Number(window.prompt("Informe a altura: "))
+
+                    let imc = weigth/height**2
+
+                    alert(`IMC: ${imc}`)
+
+                break;
+
+                case 8:
+                    let year = Number(window.prompt("Informe um ano: "))
+
+                break;
+
+                case 9:
+
+                    function convertCurrency(value, currency, currencyConvertion){
+                        let currencySymbol = currency == 'E' ? '€' : currency == 'D' ? "$" : "R$"
+
+                        let currencyEuro = '€'
+                        let currencyDolar = '$'
+                        let currencyReal = 'R$'
+
+
+
+                         switch(currency){
+                            case "E":
+                                return(currencyConvertion == "D" ? `${currencyDolar} ${(value * 1.15).toFixed(2)}` : `${currencyReal} ${(value * 6.19).toFixed(2)}`) 
+                            break;
+
+                            case "D":
+                                return(currencyConvertion == "E" ? `${(value * 0.87).toFixed(2)} ${currencyEuro}` : `${currencyReal} ${(value * 5.38).toFixed(2)}`) 
+                            break;
+
+                            case "R":
+                                return(currencyConvertion == "E" ? `${(value * 0.16).toFixed(2)} ${currencyEuro}` : `${currencyDolar} ${(value * 0.19).toFixed(2)}`)
+                            break;
+                         }
+                    }
+
+
+                    let currency = window.prompt("Informe uma moeda (E-Euro D-Dólar R-Real): ").toUpperCase()
+                    let value = Number(window.prompt("Informe o valor: ") ).toFixed(2)
+
+                    let currencySymbol = currency == 'E' ? '€' : currency == 'D' ? "$" : "R$"
+
+                    let valueFormatted =   `${currencySymbol == '€' ? `${value} ${currencySymbol}` : `${currencySymbol} ${value}`}`
+                    
+                    let inicialMessage = `Valor selecionado: ${valueFormatted}\n`
+                    
+                    let messagesConversion
+
+
+                    // alert(inicialMessage)
+                    switch(currency){
+                        case 'E':
+                            messagesConversion = `${valueFormatted} em dólares vale: ${convertCurrency(value, currency, "D")}\n`
+                            messagesConversion += `${valueFormatted} em reais vale: ${convertCurrency(value, currency, "R")}`
+                        break;
+
+                        case 'D':
+                            messagesConversion = `${valueFormatted} em euros vale: ${convertCurrency(value, currency, "E")}\n`
+                            messagesConversion += `${valueFormatted} em reais vale: ${convertCurrency(value, currency, "R")}`
+                        break;
+
+                        case 'R':
+                            messagesConversion = `${valueFormatted} em euros vale: ${convertCurrency(value, currency, "E")}\n`
+                            messagesConversion += (`${valueFormatted} em dólares vale: ${convertCurrency(value, currency, "D")}`)
+                        break;
+
+                    }
+
+                    alert(inicialMessage + messagesConversion)
                 break;
 
                 
             }
 
+        break;
+
+
+
+        case 4:
+            switch(exercicio){
+                case 1:
+                    let numSorteado = Number.parseInt(Math.random() * 100 ) + 1
+
+                    let numTentado=0, tentativas=0
+                    let totalTentivas = 5
+                    
+                    while (numSorteado != numTentado && totalTentivas > 0){
+                        numTentado = window.prompt(`\nTentativas restantes: ${totalTentivas}\nDigite um número de 1 a 100: `)
+                        tentativas += 1
+                        totalTentivas -= 1
+                    
+                        if(totalTentivas > 0){
+                            if (numSorteado > numTentado ){
+                                window.alert("O número sorteado é maior!")
+                            }else if(numSorteado < numTentado){
+                                window.alert("O número sorteado é menor!")
+                            }else{
+                                window.alert(`Parabéns! Você acertou o número em um total de ${tentativas} tentativas!`)
+                            }
+                        }else{
+                            window.alert(`Tentativas encerradas!\nO número sorteado era: ${numSorteado}`)
+                        }
+                     
+                    }
+                    
+
+
+                break;
+
+                case 2:
+                    //Pedir um número ao usuário de 1 a 9, e imprima a tabuada desse valor.​
+                    let numUsuario = window.prompt("Digite um número de 1 a 9: ")
+                    let exibicaoTabuada = ""
+
+                    for(let i = 1; i <= 10; i++){
+                        exibicaoTabuada += `${numUsuario} x ${i} = ${numUsuario * i}\n`
+                    }
+
+                    window.alert(exibicaoTabuada)
+                break;
+
+
+                case 3:
+                    /*Neste exercício, você vai simular um jogo de "Pedra, papel e tesoura" contra o computador. Para simplificar, vamos supor que a escolha do usuário é sempre "pedra". ​*/
+
+                    let opcoesJogo = ["pedra", "papel", "tesoura"]
+                    let opcaoUsuario, indiceSorteado, opcaoSorteada, msgResultJogo, resp
+
+
+                    do {
+                        opcaoUsuario = window.prompt("Pedra, papel ou tesoura? ")
+                        opcaoUsuario = opcaoUsuario.toLowerCase()
+
+                         indiceSorteado = Number.parseInt(Math.random() * 3)
+                        opcaoSorteada = opcoesJogo[indiceSorteado]
+
+                        msgResultJogo = `${opcaoUsuario} X ${opcaoSorteada}\n`
+
+                        if (opcaoUsuario == "pedra" && opcaoSorteada == "papel") {
+                            msgResultJogo += `${opcaoSorteada} ganha de ${opcaoUsuario}!\nVocê perdeu!`
+
+                        } else if (opcaoUsuario == "pedra" && opcaoSorteada == "tesoura") {
+
+                            msgResultJogo += `${opcaoUsuario} ganha de ${opcaoSorteada}!\nVocê ganhou!`
+
+                        } else if (opcaoUsuario == "papel" && opcaoSorteada == "tesoura") {
+
+                            msgResultJogo += `${opcaoSorteada} ganha de ${opcaoUsuario}!\nVocê perdeu!`
+
+                        } else if (opcaoUsuario == "papel" && opcaoSorteada == "pedra") {
+
+                            msgResultJogo += `${opcaoUsuario} ganha de ${opcaoSorteada}!\nVocê ganhou!`
+
+                    } else if (opcaoUsuario == "tesoura" && opcaoSorteada == "pedra") {
+
+                            msgResultJogo += `${opcaoSorteada} ganha de ${opcaoUsuario}!\nVocê perdeu!`
+
+                    } else if (opcaoUsuario == "tesoura" && opcaoSorteada == "papel") {
+
+                            msgResultJogo += `${opcaoUsuario} ganha de ${opcaoSorteada}!\nVocê ganhou!`
+
+                    } else {
+                            msgResultJogo += "Houve empate!"
+                    }
+
+                     window.alert(msgResultJogo)
+
+                    resp = window.confirm("Deseja continuar?")
+
+                } while (resp)
+
+                break;
+
+
+                case 4:
+                    //Neste exercício, você precisa criar um programa que calcula o fatorial de um número. O fatorial de um número é o produto de todos os números inteiros positivos de 1 até o número. Por exemplo, o fatorial de 5 (representado por 5!) é 1 * 2 * 3 * 4 * 5 = 120. ​
+                    const fatorial = (n) => {return (n == 1 ? 1 : n * fatorial(n-1) ) }
+
+                    let num = Number.parseInt(window.prompt("Digite um número: ") )
+                    window.alert(`${num}! = ${fatorial(num)}`)
+                break;
+            }
+
+        break;
+
+
+        case 5:
+            switch(exercicio){
+                case 1:
+
+
+                break;
+            }
+
+
+        break;
+
+
+
+        case 7:
+            switch(exercicio){
+                case 1:
+                    let array = [1, 2, 3, 4, 5]
+
+                    alert(`Array inicial: [${array}]\nArray * 2: [${array.map((n)=>n*2)}]`)
+                break;
+
+                case 2:
+                    let array2 = [1, 2, 3, 4, 5, 6, 7, 8]
+
+                    let sum = 0
+                    let media=0
+
+                    array2.forEach((n)=>{
+                        sum += n
+                    })
+
+                    media = sum / array2.length
+                    alert(`Array inicial: [${array2}]\nMédia dos valores: ${media}`)
+                break;
+
+                case 3:
+                    const QTD_IDADES = 20
+
+                    let idades = []
+                    let sum_idades=0
+
+                    for(let i = 0; i < QTD_IDADES; i++){
+                        idades.push(Number(window.prompt(`Informe a ${i+1}º idade: `) ) )
+                        sum_idades += idades[i]
+                    }
+
+                    let mediaIdades = sum_idades / QTD_IDADES
+
+                    let msgIdadesAcimaDaMedia=`Média de idades: ${mediaIdades}\nIdades acima da média:\n`
+
+                    idades.forEach((n) =>{
+                        if(n >  mediaIdades){
+                            msgIdadesAcimaDaMedia += `${n}\n`
+                        }
+                    } )
+
+                    alert(msgIdadesAcimaDaMedia)
+                break;
+
+                case 4:
+                    let evenNumbers = []
+
+                    let msgNumbers
+
+                    for(let i = 0; i < 10; i++){
+                        let n = Number.parseInt(window.prompt(`Digite o ${i+1}º número: `) )
+
+                        if(n % 2 == 0){
+                            evenNumbers.push(n)
+                        }
+                    }
+                    
+                    if(evenNumbers.length){
+                        msgNumbers = 'Números pares:\n'
+
+                        evenNumbers.forEach((number)=>{
+                            msgNumbers += `${number}\n`    
+                        })
+                    }else{
+                        msgNumbers = 'Todos os números são ímpares.'
+                    }
+
+                    alert(msgNumbers)
+                break;
+
+                case 5:
+                    function toTitle(name){
+                        let nameFormmated = name.split("")
+
+                        nameFormmated[0] = nameFormmated[0].toUpperCase()
+
+
+                        for(let i = 1; i < nameFormmated.length; i++){
+                            nameFormmated[i] = nameFormmated[i].toLowerCase()
+                        }
+
+                        nameFormmated = nameFormmated.join("")
+                        return nameFormmated
+                    }
+
+
+                    let names = ["Aristobaldo", "Rafael", "Parmênedes", "Heráclito", "Edmundo", "", "", "", "", ""]
+
+                    let name = window.prompt("Informe um nome: ")
+                    name = toTitle(name)
+
+                    let nameFound = ''
+
+                    names.forEach((arrayName)=>{
+                        if(arrayName == name){
+                            nameFound = name
+                        }
+                    })
+
+                    if(nameFound.length){
+                        alert(`Nome selecionado: ${name}\nNome encontrado no vetor de nomes na posição ${names.indexOf(name)} `)
+                    }else{
+                        alert(`Nome selecionado: ${name}\nNome não encontrado!`)
+                    }
+                break;
+            }
         break;
             
     }
@@ -457,4 +780,3 @@ document.addEventListener("keydown", (event) => {
 music.addEventListener("ended", () => {
     skipIntro();
 });
-
