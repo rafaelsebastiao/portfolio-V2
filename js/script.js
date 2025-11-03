@@ -1,3 +1,4 @@
+//TODO => Exercicio - Criar uma calculadora
 const QTDMODULOS = 7
 const body = window.document.getElementsByTagName("body")[0]
 const stars = 400;
@@ -36,7 +37,7 @@ numExercisesPerModule.push(4)
 numExercisesPerModule.push(7)
 numExercisesPerModule.push(9)
 numExercisesPerModule.push(4)
-numExercisesPerModule.push(15)
+numExercisesPerModule.push(16)
 numExercisesPerModule.push(1)
 numExercisesPerModule.push(5)
 
@@ -468,14 +469,401 @@ function play(modulo, exercicio){
         case 5:
             switch(exercicio){
                 case 1:
+                    // Faça uma calculadora usando o conceito de Arrow Function;
 
+                break;
+
+                case 2:
+                    let age = window.prompt("Informe sua idade: ")
+
+                    const verififyDriverLicense = (age) => age >= 18 ? "Você pode tirar a carteira de motorista!" : "Você não pode tirar a carteira de motorista!" 
+
+                    alert(verififyDriverLicense(age))
+                break;
+
+                case 3:
+                    let numbers = [0, 0, 0]
+
+                    numbers.forEach((num, i)=>{
+                        num = Number(window.prompt(`Digite o ${i+1} número: `) )
+                        numbers[i] = num
+                    })
+
+                    const sort = (array) => {
+                        let array_temp = array
+
+                        for(let i = 0; i < array_temp.length; i++){
+                            for(let j = i+1; j < array_temp.length; j++){
+
+                                if(array_temp[i] > array_temp[j]){
+                                    array_temp[i] += array_temp[j]
+                                    array_temp[j] =  array_temp[i] - array_temp[j]
+                                    array_temp[i] -= array_temp[j]
+                                }
+                            }   
+                        }
+
+                        return array_temp
+                    }
+
+                    numbers = sort(numbers)
+                    alert(numbers)
+                break;
+
+                case 4:
+                    let tempH = Number(window.prompt("Informe a quantidade de horas: "))
+
+                    let tempM = tempH * 60
+                    
+                    window.alert(`Tempo em minutos: ${tempM} minutos`)
+                break;
+
+                case 5:
+                    let value = Number(window.prompt("Informe um valor: ") )
+
+
+                    const quantityBankNotes = (value) => {
+                        let bankNotes = [200, 100, 50, 20, 10, 5, 1]
+                        let quantities = []
+                        let amount=value
+
+                        bankNotes.forEach((bankNote, i)=>{
+                            quantities.push(Math.trunc(amount / bankNote) )
+                            amount = amount - quantities[i]*bankNote
+                        })
+                        
+                        let msgBankNotes = `Para formar R${value}, são necessárias\n`
+
+                        bankNotes.forEach((bankNote, i)=>{
+                            msgBankNotes += `${quantities[i]} notas de R$ ${bankNote.toFixed(2)}\n`
+                        })
+                        
+                        return msgBankNotes
+
+                       
+                    }
+                   
+                    alert( quantityBankNotes(value))
+                break;
+
+
+                case 6:
+                    let num = window.prompt("Informe um número: ")
+
+                    let sqrt = Math.sqrt(num)
+
+                    window.alert(`A raiz quadrada de ${num} vale: ${sqrt}`)
+                break;
+
+                case 7:
+                    let weigth = Number(window.prompt("Informe o peso: "))
+                    let height = Number(window.prompt("Informe a altura: "))
+
+                    const calcular_imc = (w, h)=> w/h**2
+
+
+                    alert(`IMC: ${calcular_imc(weigth, height)}`)
+                break;
+
+                case 8:
+                    let circleArea = Number(window.prompt("Informe a área do círculo: "))
+
+                    const raio_circulo = circleArea => Math.sqrt(circleArea / Math.PI)
+
+                    alert(`O raio do circulo vale: ${raio_circulo(circleArea)}`)
+
+
+                break;
+
+                case 9:
+                    let radiusBase = Number(window.prompt("Informe o raio da base do cilindro: "))
+                    let cylinderHeight = Number(window.prompt("Informe a altura do cilindro: "))
+
+                    const volume_cilindro = (radiusBase, cylinderHeight) => Math.PI * radiusBase**2 * cylinderHeight
+
+                    alert(`O volume do cilindro vale: ${volume_cilindro(radiusBase, cylinderHeight)}`)
+                break;
+
+                case 10:
+                    side = Number(window.prompt("Informe o lado do quadrado: "))
+
+                    const area_quadrado = side => side*side
+
+                    alert(`A área do quadrado vale: ${area_quadrado(side)}m²`)
+                break;
+
+                case 11:
+                    const jogar_adivinhacao = () => {
+                        let triedNum=0, attempts = 10
+                        let usedAttempts = 1
+
+                        let secretyNum = Number.parseInt(Math.random() * 100 ) + 1
+
+                        do{
+                            
+                            if(attempts > 0){
+                                triedNum = Number(window.prompt(`Tentativas restantes: ${attempts}\nTente advinhar o número secreto: `) )
+                                
+                                if(triedNum == secretyNum){
+                                    alert(`Parabéns! Você acertou em ${usedAttempts}!`)
+                                }else if(triedNum < secretyNum){
+                                    alert("O número digitado é menor do que o número secreto!")
+                                }else{
+                                    alert("O número digitado é maior do que o número secreto!")
+                                }
+                            }else{
+                                alert(`Tentativas esgotadas! O número secreto era: ${secretyNum}`)
+                            }
+
+                            attempts -= 1
+                            usedAttempts += 1
+
+                        } while(attempts>=0 && triedNum != secretyNum)
+                    }
+                    
+                    jogar_adivinhacao()
+                break;
+
+                case 12:
+                    const simularBanco = () => {
+    let contas = {}; // Objeto para armazenar as contas: {numero_conta: {nome: string, saldo: number}}
+    let proximoNumeroConta = 1001; // Começa a numeração das contas
+
+    // Funções auxiliares (agora síncronas, usando prompt)
+
+    const criarConta = () => {
+        const nome = prompt("Digite o nome do titular da conta:").trim();
+        if (!nome) {
+            alert("Nome do titular não pode ser vazio.");
+            return;
+        }
+
+        let saldoInicial;
+        while (true) {
+            const saldoInput = prompt("Digite o saldo inicial da conta (ex: 100.00):");
+            saldoInicial = parseFloat(saldoInput);
+            if (isNaN(saldoInicial) || saldoInicial < 0) {
+                alert("Valor inválido para o saldo. Digite um número não negativo.");
+            } else {
+                break;
+            }
+        }
+
+        const numeroConta = String(proximoNumeroConta);
+        contas[numeroConta] = { nome: nome, saldo: saldoInicial };
+        alert(`Conta criada com sucesso! Número da conta: ${numeroConta}`);
+        proximoNumeroConta++;
+    };
+
+    const depositar = () => {
+        const numeroConta = prompt("Digite o número da conta para depósito:").trim();
+        if (!contas[numeroConta]) {
+            alert("Erro: Conta inexistente.");
+            return;
+        }
+
+        let valor;
+        while (true) {
+            const valorInput = prompt("Digite o valor a depositar:");
+            valor = parseFloat(valorInput);
+            if (isNaN(valor) || valor <= 0) {
+                alert("Valor inválido. Digite um número positivo.");
+            } else {
+                break;
+            }
+        }
+
+        contas[numeroConta].saldo += valor;
+        alert(`Depósito de R$${valor.toFixed(2)} realizado com sucesso na conta ${numeroConta}.\nNovo saldo: R$${contas[numeroConta].saldo.toFixed(2)}`);
+    };
+
+    const sacar = () => {
+        const numeroConta = prompt("Digite o número da conta para saque:").trim();
+        if (!contas[numeroConta]) {
+            alert("Erro: Conta inexistente.");
+            return;
+        }
+
+        let valor;
+        while (true) {
+            const valorInput = prompt("Digite o valor a sacar:");
+            valor = parseFloat(valorInput);
+            if (isNaN(valor) || valor <= 0) {
+                alert("Valor inválido. Digite um número positivo.");
+            } else {
+                break;
+            }
+        }
+
+        if (contas[numeroConta].saldo < valor) {
+            alert(`Erro: Saldo insuficiente.\nSaldo atual: R$${contas[numeroConta].saldo.toFixed(2)}`);
+            return;
+        }
+
+        contas[numeroConta].saldo -= valor;
+        alert(`Saque de R$${valor.toFixed(2)} realizado com sucesso da conta ${numeroConta}.\nNovo saldo: R$${contas[numeroConta].saldo.toFixed(2)}`);
+    };
+
+    const exibirSaldo = () => {
+        const numeroConta = prompt("Digite o número da conta para exibir o saldo:").trim();
+        if (!contas[numeroConta]) {
+            alert("Erro: Conta inexistente.");
+            return;
+        }
+
+        alert(`--- Saldo da Conta ${numeroConta} ---\nTitular: ${contas[numeroConta].nome}\nSaldo:   R$${contas[numeroConta].saldo.toFixed(2)}\n----------------------------`);
+    };
+
+    const menuPrincipal = () => {
+        while (true) {
+            const menuText =
+                "--- Menu do Banco ---\n" +
+                "1. Criar nova conta\n" +
+                "2. Depositar\n" +
+                "3. Sacar\n" +
+                "4. Exibir saldo\n" +
+                "5. Sair\n" +
+                "---------------------\n" +
+                "Escolha uma opção:";
+
+            const opcao = prompt(menuText);
+
+            if (opcao === null) { // Usuário clicou em 'Cancelar'
+                alert("Operação cancelada. Saindo do sistema.");
+                break;
+            }
+
+            switch (opcao.trim()) {
+                case '1':
+                    criarConta();
+                    break;
+                case '2':
+                    depositar();
+                    break;
+                case '3':
+                    sacar();
+                    break;
+                case '4':
+                    exibirSaldo();
+                    break;
+                case '5':
+                    alert("Obrigado por usar nosso banco! Volte sempre.");
+                    return; // Sai da função
+                default:
+                    alert("Opção inválida. Por favor, escolha um número de 1 a 5.");
+            }
+        }
+    };
+
+    // Inicia o menu principal
+    menuPrincipal();
+};
+
+// Chama a função para iniciar a simulação do banco
+simularBanco();
+                break;
+
+                case 13:
+                    let salary = Number(window.prompt("Informe seu salário: ") )
+                    let aliquot = 0, installment =0
+
+                    calcImpost = (salary) => {
+                         if (salary >= 2259.21 && salary <= 2826.65){
+                            aliquot = 7.5
+                        }else if(salary >= 2826.66 && salary <= 3751.05){
+                            aliquot = 15
+                        }else if(salary >= 3751.06 && salary <= 4664.68){
+                            aliquot = 22.5
+                        }else if(salary > 4664.68){
+                            aliquot = 27.5
+                        }
+
+                        installment = salary * (aliquot/100)
+                        return aliquot ? `Parcela a deduzir do IR: R$ ${installment.toFixed(2)}` : "Isento de imposto de renda!"
+                    }
+
+                    
+                    alert(calcImpost(salary))
+
+                break;
+
+                case 14:
+                {
+                    let salary = Number(window.prompt("Informe seu salário: "));
+
+                    const calcINSS = (salary) => {
+                        let totalINSS = 0; 
+                        let remainingSalary = salary; 
+                        const incomeRanges = [
+                            { limit: 1412.00, aliquot: 7.5 },  
+                            { limit: 2666.44, aliquot: 9 },
+                            { limit: 4000.03, aliquot: 12 },
+                            { limit: 7786.02, aliquot: 14 } 
+                        ];
+
+                        const maxINSSSalary = incomeRanges[incomeRanges.length - 1].limit;
+                        let currentSalaryToTax = Math.min(salary, maxINSSSalary);
+
+                        if (currentSalaryToTax <= 0) {
+                            return 0;
+                        }
+
+                        if (currentSalaryToTax > 0) {
+                            const taxableAmount = Math.min(currentSalaryToTax, incomeRanges[0].limit)
+                            totalINSS += taxableAmount * (incomeRanges[0].aliquot / 100)
+                            currentSalaryToTax -= taxableAmount
+                        }
+
+                        // Faixas seguintes
+                        for (let i = 1; i < incomeRanges.length && currentSalaryToTax > 0; i++) {
+                            const previousLimit = incomeRanges[i - 1].limit
+                            const currentLimit = incomeRanges[i].limit
+                            const aliquot = incomeRanges[i].aliquot
+
+                            const rangeSize = currentLimit - previousLimit
+
+                            const taxableAmount = Math.min(currentSalaryToTax, rangeSize)
+
+                            totalINSS += taxableAmount * (aliquot / 100)
+                            currentSalaryToTax -= taxableAmount
+                        }
+
+                        return `Parcela a pagar do INSS: R$ ${totalINSS}`
+                    }
+
+                    alert(calcINSS(salary))
+
+            }
+                break;
+
+                case 15:
+                    const compoundInterest = (c, i, t) => c * Math.pow( (1 + i), t)
+                    
+                    let c = Number(window.prompt("Informe o capital inicial: ") )
+                    let i = Number(window.prompt("Informe a taxa de juros: "))
+                    let t = Number(window.prompt("Informe o tempo: "))
+
+                    window.alert(`O montante final será de: R$ ${compoundInterest(c, i, t).toFixed(2)}`)
+                    
+                break;
+
+                case 16:
+                    const calcFinancing = (totalValue, numInstallments) => {
+                        let valueInstallments = totalValue / numInstallments
+
+                        return `O financiamento será de ${numInstallments} parcelas de: R$ ${valueInstallments.toFixed(2)}!`
+                    } 
+
+                    let totalValue = Number(window.prompt("Informe o valor total do financiamento: "))
+                    let numInstallments = Number( window.prompt("Informe o número de parcelas: ") )
+                    
+                    window.alert(calcFinancing(totalValue, numInstallments))
 
                 break;
             }
 
 
         break;
-
 
 
         case 7:
@@ -627,12 +1015,6 @@ function randomPosition() {
     let y = window.innerWidth;
     let x = window.innerHeight;
     return [Math.floor(Math.random() * x), Math.floor(Math.random() * y)];
-}
-
-
-
-for(let i = 0; i < QTDMODULOS; i++){
-    modulos.push(window.document.querySelector(`section#modulo${i+1}`))
 }
 
 
