@@ -1,6 +1,3 @@
-//TODO => Adicionar exercicio de validação de email
-//Adicionar exercicio de restaurante
-
 const QTDMODULOS = 9
 const body = window.document.getElementsByTagName("body")[0]
 const stars = 400;
@@ -42,7 +39,7 @@ numExercisesPerModule.push(4)
 numExercisesPerModule.push(16)
 numExercisesPerModule.push(1)
 numExercisesPerModule.push(5)
-numExercisesPerModule.push(1)
+numExercisesPerModule.push(2)
 
 for(let i = 0; i < QTDMODULOS; i++){
     for(let j = 0; j < numExercisesPerModule[i]; j++){
@@ -85,6 +82,26 @@ btnsVoltar.forEach(btn => btn.addEventListener("click", returnMenu));
 
 function play(modulo, exercicio){
     switch(modulo){
+        case 1:
+            switch(exercicio){
+                case 1:
+                    let figmaImages = window.document.getElementById("figma-images")
+
+                    btnExercises[modulo-1][exercicio-1].innerText = btnExercises[modulo-1][exercicio-1].innerText == "Play" ? "Stop" : "Play"
+                    
+                     if(btnExercises[modulo-1][exercicio-1].innerText == "Play"){
+                        figmaImages.style.display="none";
+                    }else{
+                        figmaImages.style.display="block";
+                    }
+                break;
+
+
+
+            }
+
+        break;
+
         case 2:
             switch(exercicio){
                 case 1:
@@ -1060,6 +1077,30 @@ simularBanco();
                 break;
             }
         break;
+
+        case 9:
+            switch(exercicio){
+                case 1:
+
+                break;
+
+                case 2:
+                    let restaurantIframe = window.document.getElementsByTagName("iframe")[0]
+                    
+                    btnExercises[modulo-1][exercicio-1].innerText = btnExercises[modulo-1][exercicio-1].innerText == "Play" ? "Stop" : "Play"
+                    
+                    
+                    if(btnExercises[modulo-1][exercicio-1].innerText == "Play"){
+                        restaurantIframe.style.display="none";
+                    }else{
+                        restaurantIframe.style.display="block";
+                    }
+
+                break;
+
+            }
+
+        break;
             
     }
 }
@@ -1233,7 +1274,6 @@ startBtn.addEventListener("click", () => {
 
 
     }, 9000);
-
 
 });
 
