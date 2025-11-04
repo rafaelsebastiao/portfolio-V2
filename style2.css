@@ -1,65 +1,204 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-
+/* ============================ */
+/* 🌌 ESTILO GERAL DA PÁGINA   */
+/* ============================ */
 html, body {
     height: 100%;
     min-height: 100%;
 }
 
-
-body{
-    /* background-image: url("img/teste.gif"); */
+body {
     background-size: cover;
     background-repeat: no-repeat;
-    background-position:center;
+    background-position: center;
+    background-attachment: fixed;
     font-family: 'Open Sans', sans-serif;
-    background-attachment: fixed; /* <- isso fixa o fundo e cobre tudo */
-
+    color: #fff;
 }
 
-h1{
-    color:white;
-    font-size:3.5em;
-}
-
-.modulo{
-    display: none; /* escondido no início */
-    position: relative;
-    z-index: 999; /* garante que fique por cima */
+h1 {
     color: white;
+    font-size: 3.5em;
+    text-align: center;
+}
+
+/* ============================ */
+/* 📦 MÓDULOS E EXERCÍCIOS */
+/* ============================ */
+.modulo {
+    display: none;
+    position: relative;
+    z-index: 999;
     text-align: center;
     padding: 2rem;
-    color:white;
-	font-family: "Open Sans", sans-serif;
 }
 
-.exercicio{
-    background-color: rgba(0, 0, 0, 0.6); /* preto com 60% de opacidade */
-    /* height:100px; */
-    border-radius:5px;
-    height:550px;
-    
-    display:flex;
-    flex-direction:column;
-    justify-content:start;
-    margin-bottom:30px;
-
+.exercicio {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+    padding: 20px;
 }
 
-button{
-    width:100px;
+#big-exercise {
+    height: auto;
 }
 
-#btnRetorno{
-    margin-top:100px;
+.exercicio p, 
+.exercicio ul {
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.4;
+}
+
+/* ============================ */
+/* 🎛️ BOTÕES GERAIS */
+/* ============================ */
+button {
+    min-width: 150px;
+    max-width: 250px;
+    padding: 10px 20px;
+    display: block;
+    margin: 15px auto;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #ffbb00, #ff7700);
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255, 187, 0, 0.6);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+button.small {
+    min-width: 120px;
+    max-width: 180px;
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+button.full {
+    width: 100%;
+}
+
+/* ============================ */
+/* 📋 FORMULÁRIO */
+/* ============================ */
+form {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px 30px;
+    width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.field label {
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #ffd700;
+}
+
+input[type="text"] {
+    padding: 10px;
+    background-color: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+}
+
+input[type="text"]:focus {
+    background-color: rgba(255,255,255,0.3);
+    box-shadow: 0 0 8px #ffd700;
+}
+
+.field input[type="radio"] {
+    margin-left: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 
-.text-exercise{
-    /* justify-self: start;         */
+.calculadora {
+    width: 100%;
+    max-width: 300px;
+    margin: 25px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(255, 187, 0, 0.4);
+    overflow: visible;
+    padding: 10px;
 }
 
-.button-play-exercise{
-    align-self:center;
-    justify-self: center;
+#display {
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px 10px 0 0;
 }
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 15px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.equal {
+    background: #ff8800;
+    grid-row: span 2;
+}
+
+.equal:hover {
+    background: #ffaa00;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+
+

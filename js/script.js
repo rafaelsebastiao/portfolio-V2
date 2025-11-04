@@ -1,5 +1,7 @@
-//TODO => Exercicio - Criar uma calculadora
-const QTDMODULOS = 7
+//TODO => Adicionar exercicio de validação de email
+//Adicionar exercicio de restaurante
+
+const QTDMODULOS = 9
 const body = window.document.getElementsByTagName("body")[0]
 const stars = 400;
 const music = document.getElementById("music");
@@ -29,10 +31,10 @@ let introIsIskipped = false
 
 
 
-const btnExercises = [[], [], [], [], [], [], []]
+const btnExercises = [[], [], [], [], [], [], [], [], []]
 const numExercisesPerModule = []
 
-
+numExercisesPerModule.push(1)
 numExercisesPerModule.push(4)
 numExercisesPerModule.push(7)
 numExercisesPerModule.push(9)
@@ -40,10 +42,11 @@ numExercisesPerModule.push(4)
 numExercisesPerModule.push(16)
 numExercisesPerModule.push(1)
 numExercisesPerModule.push(5)
-
+numExercisesPerModule.push(1)
 
 for(let i = 0; i < QTDMODULOS; i++){
     for(let j = 0; j < numExercisesPerModule[i]; j++){
+        console.log(`button#exercicio${i+1}-${j+1}`)
         btnExercises[i].push(window.document.querySelector(`button#exercicio${i+1}-${j+1}`))
     }
 }
@@ -53,7 +56,8 @@ for(let i = 0; i < QTDMODULOS; i++){
 function setExercises(){
     for(let i = 0; i < QTDMODULOS; i++){
         for(let j = 0; j < numExercisesPerModule[i]; j++){
-            console.log(`Número de módulos: ${btnExercises.length}\nNúmero de exercicios:${numExercisesPerModule[i]}`)
+            // console.log(`Número de módulos: ${btnExercises.length}\nNúmero de exercicios:${numExercisesPerModule[i]}`)
+            console.log(`Verificando: Módulo ${i+1}, Exercício ${j+1}`, btnExercises[i][j])
             btnExercises[i][j].addEventListener("click", ()=>{play(i+1, j+1)})
         }
     }
@@ -81,7 +85,7 @@ btnsVoltar.forEach(btn => btn.addEventListener("click", returnMenu));
 
 function play(modulo, exercicio){
     switch(modulo){
-        case 1:
+        case 2:
             switch(exercicio){
                 case 1:
                     let usuario = prompt('Digite seu nome: ')
@@ -108,7 +112,7 @@ function play(modulo, exercicio){
 
             }
         break;
-        case 2:
+        case 3:
             switch(exercicio){
                 case 1:
                     //Peça ao usuario para inserir dois numeros. Calcule e exiba o resultado das quatro operações aritiméticas básicas(soma, subtração, multiplicação e divisão) entre esses dois números
@@ -205,7 +209,7 @@ function play(modulo, exercicio){
         break;
 
 
-        case 3:
+        case 4:
             switch(exercicio){
                 case 1:
                     //Peça a idade do usuário e verifique se ele é maior de idade (18 anos ou mais). Exiba uma mensagem informando "Maior de idade" ou "Menor de idade".​
@@ -358,7 +362,7 @@ function play(modulo, exercicio){
 
 
 
-        case 4:
+        case 5:
             switch(exercicio){
                 case 1:
                     let numSorteado = Number.parseInt(Math.random() * 100 ) + 1
@@ -466,13 +470,12 @@ function play(modulo, exercicio){
         break;
 
 
-        case 5:
+        case 6:
             switch(exercicio){
+
                 case 1:
-                    // Faça uma calculadora usando o conceito de Arrow Function;
-
+                    //calculadora
                 break;
-
                 case 2:
                     let age = window.prompt("Informe sua idade: ")
 
@@ -512,8 +515,10 @@ function play(modulo, exercicio){
 
                 case 4:
                     let tempH = Number(window.prompt("Informe a quantidade de horas: "))
+                    
+                    const convertInMinutes = (tempH) => tempH*60
 
-                    let tempM = tempH * 60
+                    let tempM = convertInMinutes(tempH)
                     
                     window.alert(`Tempo em minutos: ${tempM} minutos`)
                 break;
@@ -869,6 +874,86 @@ simularBanco();
         case 7:
             switch(exercicio){
                 case 1:
+                    let nameInput = window.document.getElementById("name")
+                    let addressInput = window.document.getElementById("address")
+                    let genreInput = window.document.querySelector('input[name="genre"]:checked');
+                    let telephoneInput = window.document.getElementById("telephone")
+                    let cellphoneInput = window.document.getElementById("cellphone")
+                    let emailInput = window.document.getElementById("email")
+
+                    const isBlank = (string) => string == ""
+
+                    let nameValue = nameInput.value
+                    nameValue = nameValue.trim()
+
+                    let addressValue = addressInput.value
+                    addressValue = addressValue.trim()
+
+                    let genreValue = genreInput ? genreInput.value : "";
+
+                    let telephoneValue = telephoneInput.value
+                    telephoneValue = telephoneValue.trim()
+                    
+                    let cellphoneValue = cellphoneInput.value
+                    cellphoneValue = cellphoneValue.trim()
+
+                    let emailValue = emailInput.value
+                    emailValue = emailValue.trim()
+
+                    let fields = [
+                        {
+                            "nome": nameValue
+                        },
+
+                        {
+                            "endereço": addressValue
+                        },
+
+                        {
+                            "genero": genreValue
+                        },
+
+                        {
+                            "telefone": telephoneValue
+                        },
+
+                        {
+                            "celular": cellphoneValue
+                        },
+
+                        {   
+                            "email": emailValue
+                        }
+                    ]
+
+                    let typeFields = ["nome", "endereço", "genero", "telefone", "celular", "email"]
+
+                    if(!isBlank(nameValue) && !isBlank(addressValue) && !isBlank(genreValue) && !isBlank(telephoneValue) && !isBlank(cellphoneValue) && !isBlank(emailValue)){
+                        alert(`Dados cadastrados:\nNome: ${nameValue}\nEndereço: ${addressValue}\nGênero: ${genreValue}\nTelefone: ${telephoneValue}\nCelular: ${cellphoneValue}\nEmail: ${emailValue}`)
+
+                    }else{
+                        let messageBlankFields = ""
+
+                        fields.forEach((field, i)=>{
+                            if( isBlank(field[typeFields[i]]) ){
+                                messageBlankFields += `O campo de ${typeFields[i]} está vazio!\n`
+                            }                            
+
+                        })         
+                        
+                        alert(messageBlankFields)
+                    }                       
+                    
+                break;
+            }
+            
+            
+
+        break;
+
+        case 8:
+            switch(exercicio){
+                case 1:
                     let array = [1, 2, 3, 4, 5]
 
                     alert(`Array inicial: [${array}]\nArray * 2: [${array.map((n)=>n*2)}]`)
@@ -1028,7 +1113,6 @@ function desapearModules(){
 
 
 
-
 function skipIntro() {
     introIsIskipped = true
 
@@ -1099,6 +1183,14 @@ function aplyModuleImage(nModulo){
                 
         break;
 
+        case 7:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+        break;
+
+        case 8:
+            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+        break;
+
     }
 }
 
@@ -1121,9 +1213,6 @@ function loadModules(nModulo) {
     //some com as estrelas
     removeStars()
     aplyModuleImage(nModulo)
-
-    console.log(modulos[nModulo])
-    console.log(nModulo)
     
 
     modulos[nModulo].style.display = "block"
@@ -1162,3 +1251,47 @@ document.addEventListener("keydown", (event) => {
 music.addEventListener("ended", () => {
     skipIntro();
 });
+
+
+
+
+/*calculadora */
+// Pega a div do display
+const display = document.getElementById("display");
+
+// Função para adicionar valores ao display
+const append = (value) => {
+    if (display.innerText === "0") {
+        display.innerText = value; // Substitui o 0 inicial
+    } else {
+        display.innerText += value; // Adiciona ao final
+    }
+}
+
+
+// Limpa todo o display
+const clearDisplay = () =>{
+    display.innerText = "0";
+}
+
+
+// Apaga o último caractere
+const deleteLast = () =>{
+    if (display.innerText.length === 1) {
+        display.innerText = "0"; // Se só sobrar 1 caractere, volta para 0
+    } else {
+        display.innerText = display.innerText.slice(0, -1);
+    }
+}
+
+
+// Calcula o resultado da expressão
+const calculate = () => {
+    try {
+        const result = eval(display.innerText); // Executa a operação
+        display.innerText = result !== undefined ? result : "0";
+    } catch (error) {
+        display.innerText = "Erro"; // Caso dê erro, exibe "Erro"
+        setTimeout(() => (display.innerText = "0"), 1500); // Volta ao normal após 1.5s
+    }
+}
