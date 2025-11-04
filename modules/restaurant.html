@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurante</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <main class="container">
+        <section class="menu">
+            <h1>Restaurante do Rafão</h1>
+            <hr>
+            <label for="">Selecione um prato:</label>
+            <select name="" id="prato">
+                <option value="0">Selecione uma opção</option>
+                <option value="27">Macarronada R$27,00</option>
+                <option value="53">Lasanha R$53,00</option>
+                <option value="30">Arroz e feijão R$30,00</option>
+                <option value="120">Frango Caipira R$120,00</option>
+                <option value="55">Frango Frito R$55,00</option>
+                <option value="10">Batata R$10,00</option>
+                <option value="130">Picanha R$130,00</option>
+                <option value="5">Palha italiana R$5,00</option>
+                <option value="80">Tiramissu R$80,00</option>
+            </select>
+            <div class="quantidade">
+                <label for="">Quantidade:</label>
+                <input type="number" id="quantidade" max="10" value="1" required>
+            </div>
+            <button>Calcular</button>
+        </section>
+
+        <p id="result"></p>
+    </main>
+    <script src="../js/restaurant.js"></script>
+</body>
+</html>
