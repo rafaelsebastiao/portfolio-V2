@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 
-/* ============================ */
-/* 🌌 ESTILO GERAL DA PÁGINA   */
-/* ============================ */
+
 html, body {
     height: 100%;
     min-height: 100%;
@@ -23,9 +21,7 @@ h1 {
     text-align: center;
 }
 
-/* ============================ */
-/* 📦 MÓDULOS E EXERCÍCIOS */
-/* ============================ */
+
 .modulo {
     display: none;
     position: relative;
@@ -54,9 +50,7 @@ h1 {
     line-height: 1.4;
 }
 
-/* ============================ */
-/* 🎛️ BOTÕES GERAIS */
-/* ============================ */
+
 button {
     min-width: 150px;
     max-width: 250px;
@@ -93,9 +87,7 @@ button.full {
     width: 100%;
 }
 
-/* ============================ */
-/* 📋 FORMULÁRIO */
-/* ============================ */
+
 form {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
@@ -152,6 +144,7 @@ input[type="text"]:focus {
     padding: 10px;
 }
 
+
 #display {
     height: 60px;
     background: rgba(0, 0, 0, 0.7);
@@ -202,3 +195,19 @@ input[type="text"]:focus {
 
 
 
+iframe {
+    display: none; /* Irá começar invisível */
+    width: 100%; /* Ocupa 100% da largura do pai */
+    max-width: 700px; /* Limita a largura máxima a 700px, conforme você tinha */
+    height: auto; /* A altura se ajustará automaticamente ao conteúdo */
+    min-height: 400px; /* Opcional: Garante uma altura mínima para o iframe */
+    border: solid 1px rgba(255, 187, 0, 0.6); /* Adiciona uma borda mais estilosa */
+    border-radius: 8px; /* Opcional: Para combinar com outros elementos */
+    margin: 20px auto; /* Centraliza o iframe se ele não ocupar 100% da largura */
+   
+    overflow-y:hidden;
+}
+
+#figma-images{
+    display:none;
+}
