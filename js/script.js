@@ -12,10 +12,7 @@ const menuPortfolio = window.document.querySelector("#menu-portfolio")
 const linksImages = []
 
 
-// const btnVoltar = window.document.querySelector("button.btnRetorno")
-
 const btnsVoltar = document.querySelectorAll("button.btnRetorno");
-
 
 const modulos = []
 
@@ -1081,7 +1078,20 @@ simularBanco();
         case 9:
             switch(exercicio){
                 case 1:
+                    let emailInput = window.document.getElementById("email-input")
 
+                    let email = emailInput.value
+                    email = email.trim()
+
+                    const isEmailValid = (email) => {
+                        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        return regex.test(email);
+
+                    }
+
+                    const isBlank = (email) => email == ""
+
+                    alert(!isBlank(email) ? `O email ${email} ${isEmailValid(email) ? 'é valido!' : 'é inválido!'} ` : 'Digite um email!')
                 break;
 
                 case 2:
@@ -1201,35 +1211,35 @@ function aplyModuleImage(nModulo){
         break;
 
         case 2:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/tatooine.jpeg")'
             break;
             
         case 3:
                 
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/naboo.jpg")'
             break;
             
         case 4:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/mustafar.jpeg")'
                 
         break;
 
         case 5:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/kashyyyk.jpg")'
                 
         break;
 
         case 6:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/hoth.jpg")'
                 
         break;
 
         case 7:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/endor.jpg")'
         break;
 
         case 8:
-            document.body.style.backgroundImage = 'url("assets/images/background/coruscant.gif")'
+            document.body.style.backgroundImage = 'url("assets/images/background/death-star.jpg")'
         break;
 
     }
